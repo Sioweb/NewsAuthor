@@ -18,9 +18,9 @@ ClassLoader::addNamespaces(array(
 
 ClassLoader::addClasses(array(
     // classes
-    'sioweb\contao\extensions\news\ModuleNewsAuthor'   => 'system/modules/SWNewsAuthor/modules/ModuleNewsAuthor.php',
+    'sioweb\contao\extensions\news\ModuleNewsAuthor'   => 'system/modules/NewsAuthor/modules/ModuleNewsAuthor.php',
 ));
 
 TemplateLoader::addFiles(array(
-    'news_author'     => 'system/modules/SWNewsAuthor/templates',
+    'news_author'     => 'system/modules/NewsAuthor/templates',
 ));
