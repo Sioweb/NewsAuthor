@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="system/modules/news/languages/en/modules.php" source-language="en">
+    <body>
+      <trans-unit id="FMD.newsauthor.0">
+        <source>Nachrichtenautor</source>
+        <target>Nachrichtenautor</target>
+      </trans-unit>
+      <trans-unit id="FMD.newsauthor.1">
+        <source>Liefert die Daten eines Autors im Frontend.</source>
+        <target>Liefert die Daten eines Autors im Frontend.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,13 @@
+<?php $this->extend('block_unsearchable'); /* Lädt Standardfelder wie Überschrift, Wrapper, etc… */ ?>
+<?php $this->block('content'); ?>
+
+<?php /* HTML goes here */?>
+
+<h2>Autor: <?php echo $this->author['name'];?></h2>
+<ul>
+  <?php foreach($this->author as $key => $value) {?>
+  <li><?php echo $key;?>: <?php echo $value;?></li>
+  <?php }?>
+</ul>
+
+<?php $this->endblock(); ?>
