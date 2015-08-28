@@ -3,11 +3,13 @@
 
 <?php /* HTML goes here */?>
 
-<h2>Autor: <?php echo $this->author['name'];?></h2>
+<h2>Autor: <?php if($this->about) {?><a href="<?php echo $this->about;?>" title="<?php echo $this->about_title;?>"><?php } echo $this->author['name']; echo ($this->about?'</a>':'');?></h2>
 <ul>
   <?php foreach($this->author as $key => $value) {?>
-  <?php if(!in_array($key,array('singleSRC','name'))) {?>
+  <?php if(!in_array($key,array('singleSRC','name','email'))) {?>
   <li><?php echo $value;?></li>
+  <?php } elseif($key === 'email') {?>
+  <li><a href="mailto:<?php echo $value;?>" title="Schreibe mir eine E-Mail"><?php echo $value;?></a></li>
   <?php } elseif($key === 'singleSRC') {?>
   <figure class="image_container<?= $value->floatClass ?>"<?php if ($value->margin): ?> style="<?= $value->margin ?>"<?php endif; ?>>
     <?php if ($value->href): ?><a href="<?= $value->href ?>"<?php if ($value->linkTitle): ?> title="<?= $value->linkTitle ?>"<?php endif; ?><?= $value->attributes ?>><?php endif; ?>

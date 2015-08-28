@@ -44,10 +44,12 @@ class ModuleNewsAuthor extends \Module {
    * Generate module
    */
   protected function compile() {
+    if(!empty(($objAuthor = $this->objModel->getRelated('author')))) 
+      $arrAuthor = $objAuthor->row();
     if(\Input::get('items') != '') {
       $objArticle = \NewsModel::findByAlias(\Input::get('items'));
       $arrAuthor = $objArticle->getRelated('author')->row();
-    } elseif(!empty(($objAuthor = $this->objModel->getRelated('author')))) $arrAuthor = $objAuthor->row();
+    } 
 
     if(empty($arrAuthor))
       return '';
@@ -74,6 +76,25 @@ class ModuleNewsAuthor extends \Module {
       $__author['singleSRC'] = $objFile->path;
       $this->addImageToTemplate((object)$_obj,$__author);
       $_author['singleSRC'] = $_obj;
+    }
+
+    if(!empty($objAuthor)) {
+      $about = null;
+      if($this->jumpTo) {
+        $jt = $this->objModel->getRelated('jumpTo');
+        if(!empty($jt))
+          $about = $jt->row();
+      }
+      if(!empty($about)) {
+        $jt = $objAuthor->getRelated('jumpTo');
+        if(!empty($jt))
+          $about = $jt->row();
+      }
+    }
+
+    if(!empty($about)) {
+      $this->Template->about_title = $about['description']?$about['description']:$about['title'];
+      $this->Template->about = $this->generateFrontendUrl($about);
     }
 
     $this->Template->author = $_author;

@@ -28,3 +28,8 @@ if(!isset($GLOBALS['TL_DCA']['tl_user']['fields']['singleSRC'])) {
 if(!isset($GLOBALS['TL_DCA']['tl_user']['fields']['text'])) {
   $GLOBALS['TL_DCA']['tl_user']['fields']['text'] = $GLOBALS['TL_DCA']['tl_content']['fields']['text'];
 }
+if(!isset($GLOBALS['TL_DCA']['tl_user']['fields']['jumpTo'])) {
+  $this->loadLanguageFile('tl_page');
+  $this->loadDataContainer('tl_page');
+  $GLOBALS['TL_DCA']['tl_user']['fields']['jumpTo'] = $GLOBALS['TL_DCA']['tl_page']['fields']['jumpTo'];
+}

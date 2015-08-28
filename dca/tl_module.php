@@ -12,7 +12,8 @@
 /**
  * Add palettes to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['newsauthor']    = '{title_legend},name,headline,type;{config_legend},author,editableAuthor';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['newsauthor']    = '{title_legend},name,headline,type;{config_legend},author,editableAuthor,jumpTo';
+
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['editableAuthor'] = array
 (
@@ -26,6 +27,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['editableAuthor'] = array
 
 if(!isset($GLOBALS['TL_DCA']['tl_module']['fields']['author'])) {
   $this->loadDataContainer('tl_news');
+  $this->loadLanguageFile('tl_news');
   $GLOBALS['TL_DCA']['tl_module']['fields']['author'] = $GLOBALS['TL_DCA']['tl_news']['fields']['author'];
 }
 
