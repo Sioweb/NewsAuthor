@@ -66,6 +66,16 @@ class ModuleNewsAuthor extends \Module {
       }
     }
 
+    if(!empty($arrAuthor['singleSRC'])) {
+      $__author = array_merge(array('addImage'=>1,'floating'=>0,'caption'=>0,'fullsize'=>0,'imageUrl'=>0,'imagemargin'=>serialize(array()),'size'=>serialize(array()),'title'=>$arrAuthor['name'],'alt'=>$arrAuthor['name']),$_author);
+
+      $objFile = \FilesModel::findByUuid($_author['singleSRC']);
+      $_obj = $this->Template;
+      $__author['singleSRC'] = $objFile->path;
+      $this->addImageToTemplate((object)$_obj,$__author);
+      $_author['singleSRC'] = $_obj;
+    }
+
     $this->Template->author = $_author;
   }
 }

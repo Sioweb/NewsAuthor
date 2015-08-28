@@ -6,8 +6,16 @@
 <h2>Autor: <?php echo $this->author['name'];?></h2>
 <ul>
   <?php foreach($this->author as $key => $value) {?>
-  <li><?php echo $key;?>: <?php echo $value;?></li>
-  <?php }?>
+  <?php if(!in_array($key,array('singleSRC','name'))) {?>
+  <li><?php echo $value;?></li>
+  <?php } elseif($key === 'singleSRC') {?>
+  <figure class="image_container<?= $value->floatClass ?>"<?php if ($value->margin): ?> style="<?= $value->margin ?>"<?php endif; ?>>
+    <?php if ($value->href): ?><a href="<?= $value->href ?>"<?php if ($value->linkTitle): ?> title="<?= $value->linkTitle ?>"<?php endif; ?><?= $value->attributes ?>><?php endif; ?>
+    <?php $value->insert('picture_default', $value->picture); ?>
+    <?php if ($value->href): ?></a><?php endif; ?>
+    <?php if ($value->caption): ?><figcaption class="caption"><?= $value->caption ?></figcaption><?php endif; ?>
+  </figure>
+  <?php }}?>
 </ul>
 
 <?php $this->endblock(); ?>
